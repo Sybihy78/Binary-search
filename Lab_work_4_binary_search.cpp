@@ -5,13 +5,12 @@
 
 template <typename T>
 void selection_sort(T arr[], const int size) {
-
 	for (int i = 0; i < size - 1; ++i) {
-
 		int maxIndex = i;
 		for (int j = i + 1; j < size; ++j) {
 			if (arr[j] < arr[maxIndex]) {
-			maxIndex = j;
+				// Поехали отступы. Нужна табуляция.
+				maxIndex = j;
 			}
 		}
 
@@ -19,20 +18,16 @@ void selection_sort(T arr[], const int size) {
 		arr[i] = arr[maxIndex];
 		arr[maxIndex] = tmp;
 	}
-
-	for (int i = 0; i < size; ++i) {
-		std::cout << arr[i] << " ";
-	}
+	// Вывод внутри функции не нужен.
 }
 
 
-int binarySearch(int arr[], const int size, int value) {
+int binarySearch(int arr[], const int size, const int value) {  // Не забывайте const.
 
 	int left = 0;
 	int right = size - 1;
 
 	while (left <= right) {
-
 		int middle = (right + left) / 2;
 
 		if (arr[middle] == value) {
@@ -41,11 +36,10 @@ int binarySearch(int arr[], const int size, int value) {
 		else if (arr[middle] < value) {
 			left = ++middle;
 		}
-		else if (arr[middle] > value) {
+		else {	// Проверку можно не добавлять. Это уже лишнее.
 			right = --middle;
 		}
 	}
-
 	return -1;
 }
 
